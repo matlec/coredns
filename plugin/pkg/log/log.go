@@ -24,14 +24,12 @@ func clock() string { return time.Now().Format("2006-01-02T15:04:05.999Z07:00") 
 
 // logf calls log.Printf prefixed with level.
 func logf(level, format string, v ...interface{}) {
-	s := clock() + " " + level + fmt.Sprintf(format, v...)
-	golog.Print(s)
+	golog.Print(clock() + " " + level + fmt.Sprintf(format, v...))
 }
 
 // log calls log.Print prefixed with level.
 func log(level string, v ...interface{}) {
-	s := clock() + " " + level + fmt.Sprint(v...)
-	golog.Print(s)
+	golog.Print(clock() + " " + level + fmt.Sprint(v...))
 }
 
 // Debug is equivalent to log.Print(), but prefixed with "[DEBUG] ". It only outputs something

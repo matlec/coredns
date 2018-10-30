@@ -7,9 +7,10 @@
 ## Description
 
 By just using *log* you dump all queries (and parts for the reply) on standard output. Options exist
-to tweak the output a little. The timezone used is UTC.
+to tweak the output a little. The date/time prefix on log lines is RFC3339 formatted with
+milliseconds.
 
-Note that for busy servers this will incur a performance hit.
+Note that for busy servers logging will incur a performance hit.
 
 ## Syntax
 
@@ -78,11 +79,10 @@ The default Common Log Format is:
 `{remote}:{port} - {>id} "{type} {class} {name} {proto} {size} {>do} {>bufsize}" {rcode} {>rflags} {rsize} {duration}`
 ~~~
 
-Each of these logs will be outputted with `log.Infof`, so a typical example looks like (data/time is
-in UTC).
+Each of these logs will be outputted with `log.Infof`, so a typical example looks like this:
 
 ~~~ txt
-2018/10/27 15:01:32 [INFO] [::1]:50759 - 29008 "A IN example.org. udp 41 false 4096" NOERROR qr,rd,ra,ad 68 0.037990251s
+2018-10-30T19:10:07.547Z [INFO] [::1]:50759 - 29008 "A IN example.org. udp 41 false 4096" NOERROR qr,rd,ra,ad 68 0.037990251s
 ~~~~
 
 ## Examples
